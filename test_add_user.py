@@ -17,8 +17,21 @@ class TestAddUser(unittest.TestCase):
         self.open_add_new_page(wd)
         self.fill_user_form(wd, firstname="asf", middlename="adf", lastname="adsf", nickname="adsf", title="asdf",
                             company="asdf", address="asdf", home="123", mobile="123", work="sdfbhngf", fax="-",
-                            email="asdf@asdgva.asd", homepage="-", bday="12", bmonth="July", byear="1988",
+                            email="asdf@asdgva.asd", homepage="-", bday="12", bday2=12, bmonth="July", byear="1988",
                             address2="dbs srg", phone2="-", notes="cbm kgjbsdfb  asdfvdgsgns")
+        self.click_enter(wd)
+        self.return_to_home_page(wd)
+        self.logout(wd)
+
+    def test_add_empty_user(self):
+        wd = self.wd
+        self.open_home_page(wd)
+        self.login(wd, username="admin", password="secret")
+        self.open_add_new_page(wd)
+        self.fill_user_form(wd, firstname="", middlename="", lastname="", nickname="", title="",
+                            company="", address="", home="", mobile="", work="", fax="",
+                            email="", homepage="", bday="-", bday2=0, bmonth="-", byear="",
+                            address2="", phone2="", notes="")
         self.click_enter(wd)
         self.return_to_home_page(wd)
         self.logout(wd)
@@ -37,7 +50,7 @@ class TestAddUser(unittest.TestCase):
         wd.find_element_by_link_text("add new").click()
 
     def fill_user_form(self, wd, firstname, middlename, lastname, nickname, title, company, address, home, mobile, work,
-                       fax, email, homepage, bday, bmonth, byear, address2, phone2, notes):
+                       fax, email, homepage, bday, bday2, bmonth, byear, address2, phone2, notes):
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(firstname)
@@ -80,14 +93,15 @@ class TestAddUser(unittest.TestCase):
         wd.find_element_by_xpath("//div[@id='content']/form/label[19]").click()
         wd.find_element_by_name("bday").click()
         Select(wd.find_element_by_name("bday")).select_by_visible_text(bday)
-        wd.find_element_by_xpath("//option[@value='12']").click()
+        wd.find_element_by_xpath("//option[@value='" + str(bday2) + "']").click()
         wd.find_element_by_name("bmonth").click()
         Select(wd.find_element_by_name("bmonth")).select_by_visible_text(bmonth)
-        wd.find_element_by_xpath("//option[@value='July']").click()
+        wd.find_element_by_xpath("//option[@value='" + str(bmonth) + "']").click()
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys(byear)
         wd.find_element_by_name("theform").click()
+        # secondary information
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
         wd.find_element_by_name("address2").send_keys(address2)
