@@ -1,34 +1,26 @@
 # -*- coding: utf-8 -*-
-import unittest
+import pytest
 
-from selenium import webdriver
+from application import Application
 from group import Group
 
 
-class TestAddGroup(unittest.TestCase):
-    def setUp(self):
-        self.wd = webdriver.Firefox()
-        self.wd.implicitly_wait(30)
-
-    def test_add_group(self):
-        self.open_home_page()
-        self.login(username="admin", password="secret")
-        self.open_groups_page()
-        self.create_group(Group(name="dfgdfgdg", header="dfgdfgdg", footer="dfgdfgdfg"))
-        self.return_to_groups_page()
-        self.logout()
-
-    def test_add_empty_group(self):
-        self.open_home_page()
-        self.login(username="admin", password="secret")
-        self.open_groups_page()
-        self.create_group(Group(name="", header="", footer=""))
-        self.return_to_groups_page()
-        self.logout()
-
-    def tearDown(self):
-        self.wd.quit()
+@pytest.fixture()
+def app(request):
+    fixture = Application()
+    request.addfinilaizer(fixture.destroy)
+    return fixture
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_add_group(app):
+    app.open_home_page()
+    app.login(username="admin", password="secret")
+    app.create_group(Group(name="dfgdfgdg", header="dfgdfgdg", footer="dfgdfgdfg"))
+    app.logout()
+
+
+def test_add_empty_group(app):
+    app.open_home_page()
+    app.login(username="admin", password="secret")
+    app.create_group(Group(name="", header="", footer=""))
+    app.logout()
