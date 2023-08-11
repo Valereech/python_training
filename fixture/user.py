@@ -14,9 +14,9 @@ class UserHelper:
         wd.find_element_by_name("theform").click()
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
-    def fill_user_form(self, user):
+    def create(self, user):
         wd = self.app.wd
-        self.app.open_add_new_page()
+        self.open_add_new_page()
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(user.firstname)
@@ -77,11 +77,9 @@ class UserHelper:
         wd.find_element_by_name("notes").click()
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(user.notes)
-        self.app.click_enter()
-        self.app.return_to_home_page()
+        self.click_enter()
+        self.return_to_home_page()
 
     def return_to_home_page(self):
         wd = self.app.wd
         wd.find_element_by_link_text("home").click()
-
-        
