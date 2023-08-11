@@ -13,8 +13,7 @@ def app(request):
 
 
 def test_add_user(app):
-    app.open_home_page()
-    app.login(username="admin", password="secret")
+    app.session.login(username="admin", password="secret")
     app.open_add_new_page()
     app.fill_user_form(User(firstname="asf", middlename="adf", lastname="adsf", nickname="adsf", title="asdf",
                             company="asdf", address="asdf", home="123", mobile="123", work="sdfbhngf", fax="-",
@@ -22,12 +21,11 @@ def test_add_user(app):
                             address2="dbs srg", phone2="-", notes="cbm kgjbsdfb  asdfvdgsgns"))
     app.click_enter()
     app.return_to_home_page()
-    app.logout()
+    app.session.logout()
 
 
 def test_add_empty_user(app):
-    app.open_home_page()
-    app.login(username="admin", password="secret")
+    app.session.login(username="admin", password="secret")
     app.open_add_new_page()
     app.fill_user_form(User(firstname="", middlename="", lastname="", nickname="", title="",
                             company="", address="", home="", mobile="", work="", fax="",
@@ -35,4 +33,4 @@ def test_add_empty_user(app):
                             address2="", phone2="", notes=""))
     app.click_enter()
     app.return_to_home_page()
-    app.logout()
+    app.session.logout()
