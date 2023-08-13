@@ -7,6 +7,7 @@ from fixture.user import UserHelper
 class Application:
 
     def __init__(self):
+        """Constructor of webdriver implementation and Helpers"""
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(30)
         self.session = SessionHelper(self)
