@@ -90,7 +90,6 @@ class UserHelper:
 
     def modify_first_user(self, user):
         wd = self.app.wd
-        wd.find_element_by_link_text("home").click()
         # click edit first user
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         # fill user information
@@ -121,38 +120,17 @@ class UserHelper:
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
         wd.find_element_by_name("mobile").send_keys(user.mobile)
-        wd.find_element_by_name("work").click()
-        wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys(user.work)
-        wd.find_element_by_name("fax").click()
-        wd.find_element_by_name("fax").clear()
-        wd.find_element_by_name("fax").send_keys(user.fax)
         wd.find_element_by_name("email").click()
         wd.find_element_by_name("email").clear()
         wd.find_element_by_name("email").send_keys(user.email)
-        wd.find_element_by_name("homepage").click()
-        wd.find_element_by_name("homepage").clear()
-        wd.find_element_by_name("homepage").send_keys(user.homepage)
         wd.find_element_by_xpath("//div[@id='content']/form/label[19]").click()
         wd.find_element_by_name("bday").click()
-        # Select(wd.find_element_by_name("bday")).select_by_visible_text(user.bday)
         wd.find_element_by_xpath("//option[@value='" + str(user.bday2) + "']").click()
         wd.find_element_by_name("bmonth").click()
-        # Select(wd.find_element_by_name("bmonth")).select_by_visible_text(user.bmonth)
         wd.find_element_by_xpath("//option[@value='" + str(user.bmonth) + "']").click()
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys(user.byear)
-        # secondary information
-        wd.find_element_by_name("address2").click()
-        wd.find_element_by_name("address2").clear()
-        wd.find_element_by_name("address2").send_keys(user.address2)
-        wd.find_element_by_name("phone2").click()
-        wd.find_element_by_name("phone2").clear()
-        wd.find_element_by_name("phone2").send_keys(user.phone2)
-        wd.find_element_by_name("notes").click()
-        wd.find_element_by_name("notes").clear()
-        wd.find_element_by_name("notes").send_keys(user.notes)
         # click Update
         wd.find_element_by_name("update").click()
         # return to home page

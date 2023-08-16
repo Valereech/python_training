@@ -1,7 +1,5 @@
 
-
 class GroupHelper:
-    """Class GroupHelper"""
 
     def __init__(self, app):
         self.app = app
@@ -58,7 +56,6 @@ class GroupHelper:
         # click update
         wd.find_element_by_xpath("//input[@value='Update']").click()
         self.return_to_groups_page()
-
 
     def return_to_groups_page(self):
         wd = self.app.wd
