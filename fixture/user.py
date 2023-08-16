@@ -15,8 +15,12 @@ class UserHelper:
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
     def create(self, user):
-        wd = self.app.wd
         self.open_add_new_page()
+        self.fill_form(user)
+        self.click_enter()
+
+    def fill_form(self, user):
+        wd = self.app.wd
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(user.firstname)
@@ -58,15 +62,12 @@ class UserHelper:
         wd.find_element_by_name("homepage").send_keys(user.homepage)
         wd.find_element_by_xpath("//div[@id='content']/form/label[19]").click()
         wd.find_element_by_name("bday").click()
-        # Select(wd.find_element_by_name("bday")).select_by_visible_text(user.bday)
         wd.find_element_by_xpath("//option[@value='" + str(user.bday2) + "']").click()
         wd.find_element_by_name("bmonth").click()
-        # Select(wd.find_element_by_name("bmonth")).select_by_visible_text(user.bmonth)
         wd.find_element_by_xpath("//option[@value='" + str(user.bmonth) + "']").click()
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys(user.byear)
-        wd.find_element_by_name("theform").click()
         # secondary information
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
@@ -77,8 +78,6 @@ class UserHelper:
         wd.find_element_by_name("notes").click()
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(user.notes)
-        self.click_enter()
-        self.return_to_home_page()
 
     def delete_first_user(self):
         wd = self.app.wd
@@ -92,45 +91,8 @@ class UserHelper:
         wd = self.app.wd
         # click edit first user
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
-        # fill user information
-        wd.find_element_by_name("firstname").click()
-        wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(user.firstname)
-        wd.find_element_by_name("middlename").click()
-        wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys(user.middlename)
-        wd.find_element_by_name("lastname").click()
-        wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(user.lastname)
-        wd.find_element_by_name("nickname").click()
-        wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys(user.nickname)
-        wd.find_element_by_name("title").click()
-        wd.find_element_by_name("title").clear()
-        wd.find_element_by_name("title").send_keys(user.title)
-        wd.find_element_by_name("company").click()
-        wd.find_element_by_name("company").clear()
-        wd.find_element_by_name("company").send_keys(user.company)
-        wd.find_element_by_name("address").click()
-        wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys(user.address)
-        wd.find_element_by_name("home").click()
-        wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(user.home)
-        wd.find_element_by_name("mobile").click()
-        wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys(user.mobile)
-        wd.find_element_by_name("email").click()
-        wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys(user.email)
-        wd.find_element_by_xpath("//div[@id='content']/form/label[19]").click()
-        wd.find_element_by_name("bday").click()
-        wd.find_element_by_xpath("//option[@value='" + str(user.bday2) + "']").click()
-        wd.find_element_by_name("bmonth").click()
-        wd.find_element_by_xpath("//option[@value='" + str(user.bmonth) + "']").click()
-        wd.find_element_by_name("byear").click()
-        wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys(user.byear)
+        # update user information
+        self.fill_form(user)
         # click Update
         wd.find_element_by_name("update").click()
         # return to home page
