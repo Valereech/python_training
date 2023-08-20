@@ -1,3 +1,4 @@
+from selenium.webdriver.support.ui import Select
 
 
 class UserHelper:
@@ -42,19 +43,19 @@ class UserHelper:
         self.change_field_value("fax", user.fax)
         self.change_field_value("email", user.email)
         self.change_field_value("homepage", user.homepage)
-        self.change_field_value("bday", user.bday)
-        self.change_field_value("bmonth", user.bmonth)
+        self.burtsday_fields("bday", user.bday)
+        self.burtsday_fields("bmonth", user.bmonth)
         self.change_field_value("byear", user.byear)
-        #wd.find_element_by_name("bday")
-        #wd.find_element_by_xpath("//div[@id='content']/form/label[19]").click()
-        #wd.find_element_by_name("bday").click()
-        #wd.find_element_by_xpath("//option[@value='" + str(user.bday2) + "']").click()
-        #wd.find_element_by_name("bmonth").click()
-        #wd.find_element_by_xpath("//option[@value='" + str(user.bmonth) + "']").click()
         # secondary information
         self.change_field_value("address2", user.address2)
         self.change_field_value("phone2", user.phone2)
         self.change_field_value("notes", user.notes)
+
+    def burtsday_fields(self, field_name, text):
+        wd = self.app.wd
+        wd.find_element_by_name(field_name).click()
+        Select(wd.find_element_by_name(field_name)).select_by_visible_text(text)
+        wd.find_element_by_xpath("//option[@value='"+text+"']").click()
 
     def count(self):
         wd = self.app.wd
