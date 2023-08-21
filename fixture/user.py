@@ -8,7 +8,8 @@ class UserHelper:
 
     def open_add_new_page(self):
         wd = self.app.wd
-        wd.find_element_by_link_text("add new").click()
+        if not (wd.current_url.endswith("/edit.php") and len(wd.find_element_by_name("selected[]")) > 0):
+            wd.find_element_by_link_text("add new").click()
 
     def click_enter(self):
         wd = self.app.wd
@@ -83,4 +84,5 @@ class UserHelper:
 
     def return_to_home_page(self):
         wd = self.app.wd
+        #if not (wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_name("selected[]")) > 0):
         wd.find_element_by_link_text("home").click()
