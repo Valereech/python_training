@@ -4,7 +4,7 @@ from fixture.application import Application
 
 fixture = None
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def app():
     global fixture
     if fixture is None:
@@ -16,7 +16,7 @@ def app():
     return fixture
 
 
-@pytest.fixture(scope='session', autouse=True)
+@pytest.fixture(scope="session", autouse=True)
 def stop(request):
     def the_end():
         fixture.session.enshure_logout()

@@ -22,6 +22,7 @@ class UserHelper:
         self.fill_form(user)
         self.click_enter()
         self.return_to_home_page()
+        self.contacts_cache = None
 
     def change_field_value(self, field_name, text):
         wd = self.app.wd
@@ -71,6 +72,7 @@ class UserHelper:
         # Submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
+        self.contacts_cache = None
 
     def modify_first_user(self, user):
         wd = self.app.wd
@@ -82,19 +84,23 @@ class UserHelper:
         wd.find_element_by_name("update").click()
         # return to home page
         self.return_to_home_page()
+        self.contacts_cache = None
 
     def return_to_home_page(self):
         wd = self.app.wd
         #if not (wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_name("selected[]")) > 0):
         wd.find_element_by_link_text("home").click()
 
+    contacts_cache = None
+
     def get_contacts_list(self):
-        wd = self.app.wd
-        self.return_to_home_page()
-        contacts_list = []
-        for element in wd.find_elements_by_css_selector("tr[name=entry]"):
-            text1 = element.find_element_by_css_selector("td:nth-of-type(2)").text
-            text2 = element.find_element_by_css_selector("td:nth-of-type(3)").text
-            id = element.find_element_by_name("selected[]").get_attribute("value")
-            contacts_list.append(User(id=id, firstname=text2, lastname=text1))
-        return contacts_list
+        if self.contacts_cache is None:
+            wd = self.app.wd
+            self.return_to_home_page()
+            self.contacts_cache = []
+            for element in wd.find_elements_by_css_selector("tr[name=entry]"):
+                text1 = element.find_element_by_css_selector("td:nth-of-type(2)").text
+                text2 = element.find_element_by_css_selector("td:nth-of-type(3)").text
+                el_id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.contacts_cache.append(User(id=el_id, firstname=text2, lastname=text1))
+        return list(self.contacts_cache)

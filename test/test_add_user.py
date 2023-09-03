@@ -14,7 +14,7 @@ def test_add_user(app):
     contacts_list_before.append(user)
     assert sorted(contacts_list_before, key=User.id_or_max) == sorted(contacts_list_after, key=User.id_or_max)
 
- 
+
 def test_add_empty_user(app):
     contacts_list_before = app.user.get_contacts_list()
     user = (User(firstname="", middlename="", lastname="", nickname="", title="",
@@ -26,4 +26,3 @@ def test_add_empty_user(app):
     assert len(contacts_list_before) + 1 == len(contacts_list_after)
     contacts_list_before.append(user)
     assert sorted(contacts_list_before, key=User.id_or_max) == sorted(contacts_list_after, key=User.id_or_max)
-
