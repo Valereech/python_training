@@ -64,20 +64,26 @@ class UserHelper:
         wd = self.app.wd
         self.return_to_home_page()
         return len(wd.find_elements_by_name("selected[]"))
-
+    
     def delete_first_user(self):
+        self.delete_user_by_index(0)
+
+    def delete_user_by_index(self, index):
         wd = self.app.wd
         # Select user to delete
-        wd.find_element_by_name("selected[]").click()
+        wd.find_elements_by_name("selected[]")[index].click()
         # Submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
         self.contacts_cache = None
 
     def modify_first_user(self, user):
+        self.modify_user_by_index(0, user)
+
+    def modify_user_by_index(self, index, user):
         wd = self.app.wd
-        # click edit first user
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        # click edit some user
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr["+str(index)+"]/td[8]/a/img").click()
         # update user information
         self.fill_form(user)
         # click Update
