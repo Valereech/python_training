@@ -1,5 +1,5 @@
 """module providing class Application for create and destroy fixture"""
-from selenium import webdriver
+from selenium.webdriver.firefox.webdriver import WebDriver
 from fixture.session import SessionHelper
 from fixture.group import GroupHelper
 from fixture.user import UserHelper
@@ -8,8 +8,7 @@ from fixture.user import UserHelper
 class Application:
 
     def __init__(self):
-        self.wd = webdriver.Firefox()
-        self.wd.implicitly_wait(3)
+        self.wd = WebDriver()
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.user = UserHelper(self)
