@@ -11,7 +11,7 @@ def test_mod_some_user(app):
                                     home="-", mobile="89231234567", work="-", fax="", email="alex224a@yandex.ru",
                                     homepage="", bday="13", bday2=13, bmonth="September", byear="1988", address2="",
                                     phone2="", notes=""))
-    index = randrange(2, len(contacts_list_before))
+    index = randrange(0, len(contacts_list_before))
     user.id = contacts_list_before[index].id
     app.user.modify_user_by_index(index, user)
     contacts_list_after = app.user.get_contacts_list()

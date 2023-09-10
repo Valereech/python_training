@@ -83,7 +83,9 @@ class UserHelper:
     def modify_user_by_index(self, index, user):
         wd = self.app.wd
         # click edit some user
-        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr["+str(index)+"]/td[8]/a/img").click()
+        elements = wd.find_elements_by_xpath("//img[@alt='Edit']")
+        element = elements[index]
+        element.click()
         # update user information
         self.fill_form(user)
         # click Update
