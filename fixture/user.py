@@ -45,6 +45,8 @@ class UserHelper:
         self.change_field_value("work", user.work)
         self.change_field_value("fax", user.fax)
         self.change_field_value("email", user.email)
+        self.change_field_value("email2", user.email2)
+        self.change_field_value("email3", user.email3)
         self.change_field_value("homepage", user.homepage)
         self.burtsday_fields("bday", user.bday)
         self.burtsday_fields("bmonth", user.bmonth)
@@ -80,12 +82,15 @@ class UserHelper:
     def modify_first_user(self, user):
         self.modify_user_by_index(0, user)
 
-    def modify_user_by_index(self, index, user):
+    def open_user_to_edit_by_index(self, index):
         wd = self.app.wd
-        # click edit some user
         elements = wd.find_elements_by_xpath("//img[@alt='Edit']")
         element = elements[index]
         element.click()
+
+    def modify_user_by_index(self, index, user):
+        wd = self.app.wd
+        self.open_user_to_edit_by_index(index)
         # update user information
         self.fill_form(user)
         # click Update
@@ -96,7 +101,8 @@ class UserHelper:
 
     def return_to_home_page(self):
         wd = self.app.wd
-        #if not (wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_name("selected[]")) > 0):
+        #if not (wd.current_url.endswith("/addressbook/")\
+        # and len(wd.find_elements_by_name("selected[]")) > 0):
         wd.find_element_by_link_text("home").click()
 
     contacts_cache = None
@@ -107,8 +113,32 @@ class UserHelper:
             self.return_to_home_page()
             self.contacts_cache = []
             for element in wd.find_elements_by_css_selector("tr[name=entry]"):
-                text1 = element.find_element_by_css_selector("td:nth-of-type(2)").text
-                text2 = element.find_element_by_css_selector("td:nth-of-type(3)").text
+                lastname = element.find_element_by_css_selector("td:nth-of-type(2)").text
+                firstname = element.find_element_by_css_selector("td:nth-of-type(3)").text
                 el_id = element.find_element_by_name("selected[]").get_attribute("value")
-                self.contacts_cache.append(User(id=el_id, firstname=text2, lastname=text1))
+                address = element.find_element_by_css_selector("td:nth-of-type(4)").text
+                emails = element.find_element_by_css_selector("td:nth-of-type(5)").text.splitlines()
+                phones = element.find_element_by_css_selector("td:nth-of-type(6)").text.splitlines()
+                self.contacts_cache.append(User(id=el_id, firstname=firstname, lastname=lastname,
+                                                address=address, email=emails[0], email2=emails[1],
+                                                email3=emails[2], home=phones[0], mobile=phones[1],
+                                                work=phones[2], phone2=phones[3]))
         return list(self.contacts_cache)
+
+    def get_contact_info_from_edit_page(self, index):
+        wd = self.app.wd
+        self.open_user_to_edit_by_index(index)
+        firstname = wd.find_element_by_name("firstname").get_attribute("value")
+        lastname = wd.find_element_by_name("lastname").get_attribute("value")
+        id = wd.find_element_by_name("id").get_attribute("value")
+        address = wd.find_element_by_name("address").text
+        home = wd.find_element_by_name("home").get_attribute("value")
+        mobile = wd.find_element_by_name("mobile").get_attribute("value")
+        work = wd.find_element_by_name("work").get_attribute("value")
+        phone2 = wd.find_element_by_name("phone2").get_attribute("value")
+        email = wd.find_element_by_name("email").get_attribute("value")
+        email2 = wd.find_element_by_name("email2").get_attribute("value")
+        email3 = wd.find_element_by_name("email3").get_attribute("value")
+        return User(firstname=firstname, lastname=lastname, id=id, address=address,
+                    home=home, mobile=mobile, work=work, phone2=phone2,
+                    email=email, email2=email2, email3=email3)

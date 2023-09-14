@@ -1,4 +1,4 @@
-"""Module providing create and finilize fixture"""
+"""Module providing create and finalize fixture"""
 import pytest
 from fixture.application import Application
 

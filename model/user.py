@@ -3,9 +3,9 @@ from sys import maxsize
 
 class User:
 
-    def __init__(self, firstname=None,  middlename=None,  lastname=None,  nickname=None,  title=None,  company=None,  address=None,
-                    home=None,  mobile=None,  work=None,  fax=None,  email=None,  homepage=None,  bday=None,  bday2=None,
-                    bmonth=None,  byear=None,  address2=None,  phone2=None,  notes=None, id=None):
+    def __init__(self, firstname=None, middlename=None, lastname=None, nickname=None, title=None, company=None, address=None,
+                    home=None, mobile=None, work=None, fax=None, email=None, email2=None, email3=None, homepage=None,
+                    bday=None, bday2=None, bmonth=None, byear=None, address2=None, phone2=None, notes=None, id=None):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
@@ -18,6 +18,8 @@ class User:
         self.work = work
         self.fax = fax
         self.email = email
+        self.email2 = email2
+        self.email3 = email3
         self.homepage = homepage
         self.bday = bday
         self.bday2 = bday2
@@ -32,7 +34,8 @@ class User:
         return "%s:%s:%s" % (self.id, self.firstname, self.lastname)
     
     def __eq__(self, other):
-        return (self.id is None or other.id is None or self.id == other.id) and self.firstname == other.firstname and self.lastname == other.lastname
+        return (self.id is None or other.id is None or self.id == other.id)\
+            and self.firstname == other.firstname and self.lastname == other.lastname
     
     def id_or_max(self):
         if self.id:
