@@ -112,17 +112,16 @@ class UserHelper:
             wd = self.app.wd
             self.return_to_home_page()
             self.contacts_cache = []
-            for element in wd.find_elements_by_css_selector("tr[name=entry]"):
+            for element in wd.find_elements_by_name("entry"):
                 lastname = element.find_element_by_css_selector("td:nth-of-type(2)").text
                 firstname = element.find_element_by_css_selector("td:nth-of-type(3)").text
                 el_id = element.find_element_by_name("selected[]").get_attribute("value")
                 address = element.find_element_by_css_selector("td:nth-of-type(4)").text
-                emails = element.find_element_by_css_selector("td:nth-of-type(5)").text.splitlines()
-                phones = element.find_element_by_css_selector("td:nth-of-type(6)").text.splitlines()
+                emails = element.find_element_by_css_selector("td:nth-of-type(5)").text
+                phones = element.find_element_by_css_selector("td:nth-of-type(6)").text
                 self.contacts_cache.append(User(id=el_id, firstname=firstname, lastname=lastname,
-                                                address=address, email=emails[0], email2=emails[1],
-                                                email3=emails[2], home=phones[0], mobile=phones[1],
-                                                work=phones[2], phone2=phones[3]))
+                                                address=address, all_emails_from_home_page=emails,
+                                                all_phones_from_home_page=phones))
         return list(self.contacts_cache)
 
     def get_contact_info_from_edit_page(self, index):
