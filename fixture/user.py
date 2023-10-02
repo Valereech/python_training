@@ -32,7 +32,7 @@ class UserHelper:
             wd.find_element_by_name(field_name).send_keys(text)
 
     def fill_form(self, user):
-        #wd = self.app.wd
+        # wd = self.app.wd
         self.change_field_value("firstname", user.firstname)
         self.change_field_value("middlename", user.middlename)
         self.change_field_value("lastname", user.lastname)
@@ -101,7 +101,7 @@ class UserHelper:
 
     def return_to_home_page(self):
         wd = self.app.wd
-        #if not (wd.current_url.endswith("/addressbook/")\
+        # if not (wd.current_url.endswith("/addressbook/")\
         # and len(wd.find_elements_by_name("selected[]")) > 0):
         wd.find_element_by_link_text("home").click()
 
