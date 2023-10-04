@@ -1,14 +1,17 @@
+import random
 from model.user import User
-from random import randrange
 
 
-def test_delete_some_user(app):
-    contacts_list_before = app.user.get_contacts_list()
-    if app.user.count() == 0:
+def test_delete_some_user(app, db, check_ui):
+    if db.get_contacts_list() == 0:
         app.user.create(User(firstname="New user"))
-    index = randrange(0, len(contacts_list_before))
-    app.user.delete_user_by_index(index)
-    contacts_list_after = app.user.get_contacts_list()
-    assert len(contacts_list_before) - 1 == len(contacts_list_after)
-    contacts_list_before[index:index + 1] = []
+    contacts_list_before = db.get_contacts_list()
+    user = random.choice(contacts_list_before)
+    app.user.delete_user_by_id(user.id)
+    assert len(contacts_list_before) - 1 == len(db.get_contacts_list())
+    contacts_list_after = db.get_contacts_list()
+    contacts_list_before.remove(user)
     assert contacts_list_before == contacts_list_after
+    if check_ui:
+        assert sorted(contacts_list_before, key=User.id_or_max) == sorted(app.user.get_contacts_list(),
+                                                                          key=User.id_or_max)

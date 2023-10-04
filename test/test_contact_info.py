@@ -22,7 +22,7 @@ def test_info_on_home_page(app):
     assert contact_from_home_page.all_phones_from_home_page == merge_phones_like_on_home_page(contact_from_edit_page)
 
 def clear(s):
-    return re.sub("[() -]", "", s)
+    return re.sub("[() -']", "", s)
 
 def merge_phones_like_on_home_page(user):
     return "\n".join(filter(lambda x: x != "",

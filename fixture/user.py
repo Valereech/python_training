@@ -66,6 +66,14 @@ class UserHelper:
         wd = self.app.wd
         self.return_to_home_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def select_user_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
+
+    def select_user_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//input[@id='"+id+"']").click()
     
     def delete_first_user(self):
         self.delete_user_by_index(0)
@@ -73,7 +81,16 @@ class UserHelper:
     def delete_user_by_index(self, index):
         wd = self.app.wd
         # Select user to delete
-        wd.find_elements_by_name("selected[]")[index].click()
+        self.select_user_by_index(index)
+        # Submit deletion
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        wd.switch_to.alert.accept()
+        self.contacts_cache = None
+
+    def delete_user_by_id(self, id):
+        wd = self.app.wd
+        # Select user to delete
+        self.select_user_by_id(id)
         # Submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
@@ -88,9 +105,24 @@ class UserHelper:
         element = elements[index]
         element.click()
 
+    def open_user_to_edit_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//*[@id='%s']/../..//*[@title='Edit']" % id).click()
+
     def modify_user_by_index(self, index, user):
         wd = self.app.wd
         self.open_user_to_edit_by_index(index)
+        # update user information
+        self.fill_form(user)
+        # click Update
+        wd.find_element_by_name("update").click()
+        # return to home page
+        self.return_to_home_page()
+        self.contacts_cache = None
+
+    def modify_user_by_id(self, id, user):
+        wd = self.app.wd
+        self.open_user_to_edit_by_id(id)
         # update user information
         self.fill_form(user)
         # click Update
