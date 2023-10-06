@@ -3,7 +3,7 @@ from model.user import User
 
 
 def test_mod_some_user(app, db, check_ui):
-    if db.get_contacts_list() == 0:
+    if len(db.get_contacts_list()) == 0:
         app.user.create(User(firstname="Alexey", middlename="Valeryevich", lastname="Trushin",
                                     nickname="Valereech", title="", company="PT",
                                     address="Tomsk", home="-", mobile="89231234567",
@@ -20,9 +20,13 @@ def test_mod_some_user(app, db, check_ui):
                                     homepage="", bday="13", bmonth="September",
                                     byear="1988", address2="-", phone2="121212", notes=""))
     user = random.choice(contacts_list_before)
+    contacts_list_before.remove(user)
+    data_to_edit.id = user.id
+    contacts_list_before.append(data_to_edit)
     app.user.modify_user_by_id(user.id, data_to_edit)
-    assert len(contacts_list_before) == len(db.get_contacts_list())
     contacts_list_after = db.get_contacts_list()
+    assert len(contacts_list_before) == len(db.get_contacts_list())
     assert sorted(contacts_list_before, key=User.id_or_max) == sorted(contacts_list_after, key=User.id_or_max)
     if check_ui:
-        assert sorted(contacts_list_before, key=User.id_or_max) == sorted(contacts_list_after, key=User.id_or_max)
+        assert sorted(contacts_list_before, key=User.id_or_max) == sorted(app.user.get_contacts_list(),
+                                                                          key=User.id_or_max)
