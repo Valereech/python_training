@@ -33,12 +33,16 @@ class User:
         self.all_emails_from_home_page = all_emails_from_home_page
 
     def __repr__(self):
-        return "%s:%s;%s;%s;%s;%s" % (self.id, self.firstname, self.lastname, self.address, self.mobile, self.email)
+        return "%s:%s;%s;%s;%s;%s;%s;%s;%s;%s;%s" % (self.id, self.firstname, self.lastname, self.address, self.home,
+                                                     self.mobile, self.work, self.email, self.email2, self.email3,
+                                                     self.phone2)
     
     def __eq__(self, other):
         return (self.id is None or other.id is None or self.id == other.id)\
                 and self.firstname == other.firstname and self.lastname == other.lastname\
-                and self.address == other.address and self.mobile == other.mobile and self.email == other.email
+                and self.address == other.address and self.home == other.home and self.mobile == other.mobile\
+                and self.work == other.work and self.email == other.email and self.email2 == other.email2\
+                and self.email3 == other.email3 and self.phone2 == other.phone2
 
     def id_or_max(self):
         if self.id:
