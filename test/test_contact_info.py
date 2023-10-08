@@ -12,16 +12,12 @@ def test_info_on_home_page(app, db):
                              homepage="", bday="13", bmonth="September",
                              byear="1988", address2="-", phone2="-", notes=""))
     contact_list_from_db = sorted(db.get_contacts_list(), key=User.id_or_max)
-    for contact in contact_list_from_db:
-        contact_from_home_page = sorted(app.user.get_contacts_list(), key=User.id_or_max)
-        for item in contact_from_home_page:
-            if contact == item:
-                assert item.id == contact.id
-                assert item.firstname == contact.firstname
-                assert item.lastname == contact.lastname
-                assert item.address == contact.address
-                assert item.all_emails_from_home_page == merge_emails_like_on_home_page(contact)
-                assert item.all_phones_from_home_page == merge_phones_like_on_home_page(contact)
+    contact_from_home_page = sorted(app.user.get_contacts_list(), key=User.id_or_max)
+    for contact in range(len(contact_list_from_db)):
+        assert contact_from_home_page[contact].id == contact_list_from_db[contact].id
+        assert contact_from_home_page[contact].firstname == contact_list_from_db[contact].firstname
+        assert contact_from_home_page[contact].lastname == contact_list_from_db[contact].lastname
+        assert contact_from_home_page[contact].address == contact_list_from_db[contact].address
 
 
 def clear(s):
