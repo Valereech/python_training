@@ -173,3 +173,20 @@ class UserHelper:
         return User(firstname=firstname, lastname=lastname, id=id, address=address,
                     home=home, mobile=mobile, work=work, phone2=phone2,
                     email=email, email2=email2, email3=email3)
+
+    def add_user_to_group(self, user_id, group_id):
+        wd = self.app.wd
+        self.return_to_home_page()
+        self.select_user_by_id(user_id)
+        wd.find_element_by_xpath("//select[@name='to_group']/option[@value='"+group_id+"']").click()
+        wd.find_element_by_xpath("//input[@value='Add to']").click()
+        #wd.find_element_by_xpath("//a[contains(@href, './?group="+group_id+"')]").click()
+
+    def delete_user_from_group(self, user_id, group_id):
+        wd = self.app.wd
+        self.return_to_home_page()
+        wd.find_element_by_xpath("//select[@name='group']/option[@value='"+group_id+"']").click()
+        wd.find_element_by_id("%s" % user_id).click()
+        wd.find_element_by_name("remove").click()
+        # wd.find_element_by_xpath("//a[contains(@href, './?group=" + group_id + "')]").click()
+

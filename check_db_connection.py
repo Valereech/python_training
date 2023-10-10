@@ -1,12 +1,12 @@
-import pymysql.cursors
+from fixture.orm import ORMfixture
+from model.group import Group
 
 
-connection = pymysql.connect(host='localhost', database='addressbook', user='root', password='')
+db = ORMfixture(host='localhost', name='addressbook', user='root', password='')
 
 try:
-    cursor = connection.cursor()
-    cursor.execute("select * from group_list")
-    for row in cursor.fetchall():
-        print(row)
+    ls = db.get_users_in_group(Group(id='37'))
+    for item in ls:
+        print(item)
 finally:
-    connection.close()
+    pass  # db.destroy()
