@@ -6,9 +6,9 @@ from fixture.orm import ORMfixture
 
 def test_add_user_to_group(app):
     orm_db = ORMfixture(host='localhost', name='addressbook', user='root', password='')
-    if orm_db.get_contact_list() == 0:
+    if len(orm_db.get_contact_list()) == 0:
         app.user.create(User(firstname="New user"))
-    if orm_db.get_group_list() == 0:
+    if len(orm_db.get_group_list()) == 0:
         app.group.create(Group(name="New group"))
     groups_list = orm_db.get_group_list()
     group = random.choice(groups_list)
