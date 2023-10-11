@@ -18,6 +18,11 @@ def test_info_on_home_page(app, db):
         assert contact_from_home_page[contact].firstname == contact_list_from_db[contact].firstname
         assert contact_from_home_page[contact].lastname == contact_list_from_db[contact].lastname
         assert contact_from_home_page[contact].address == contact_list_from_db[contact].address
+        print(contact_from_home_page)
+        assert contact_from_home_page[contact].all_emails_from_home_page ==\
+               merge_emails_like_on_home_page(contact_list_from_db[contact])
+        assert contact_from_home_page[contact].all_phones_from_home_page ==\
+               merge_phones_like_on_home_page(contact_list_from_db[contact])
 
 
 def clear(s):
