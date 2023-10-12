@@ -58,9 +58,10 @@ class UserHelper:
 
     def burtsday_fields(self, field_name, text):
         wd = self.app.wd
-        wd.find_element_by_name(field_name).click()
-        Select(wd.find_element_by_name(field_name)).select_by_visible_text(text)
-        wd.find_element_by_xpath("//option[@value='"+text+"']").click()
+        if text is not None:
+            wd.find_element_by_name(field_name).click()
+            Select(wd.find_element_by_name(field_name)).select_by_visible_text(text)
+            wd.find_element_by_xpath("//option[@value='"+text+"']").click()
 
     def count(self):
         wd = self.app.wd
