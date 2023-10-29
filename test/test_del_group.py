@@ -4,7 +4,7 @@ from model.group import Group
 
 
 def test_delete_some_group(app, db, check_ui):
-    if db.get_group_list() == 0:
+    if len(db.get_group_list()) == 0:
         app.group.create(Group(name="New group"))
     groups_list_before = db.get_group_list()
     group = random.choice(groups_list_before)
