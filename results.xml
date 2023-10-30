@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="11" skipped="0" tests="20" time="63.593" timestamp="2023-10-31T00:45:35.973260" hostname="atrushin-nb"><testcase classname="test.test_add_group" name="test_add_group[None:;;]" time="7.453" /><testcase classname="test.test_add_group" name="test_add_group[None:name - ;header - oCML4lu#p4DoHYc;footer - ]" time="1.049" /><testcase classname="test.test_add_group" name="test_add_group[None:name - ;header - p&gt;@Ne?W k :=Hzo7qX;footer - ]" time="1.085" /><testcase classname="test.test_add_group" name="test_add_group[None:name -   ;header - I'z[Redf&lt;cd8-h7HkMF;footer - RV%{2}  a3U#y8]" time="1.114"><failure message="AssertionError: assert [8:Commerce;A...(, 13:;;, ...] == [8:Commerce;A...(, 13:;;, ...]&#10;  Left contains one more item: None:name -   ;header - I'z[Redf&lt;cd8-h7HkMF;footer - RV%{2}  a3U#y8&#10;  Full diff:&#10;    [&#10;     8:Commerce;All sales;All sales,&#10;     9:;;,&#10;     10:name - ;header - oCML4lu#p4DoHYc;footer - ,&#10;     11:name - ;header - p&gt;@Ne?W k :=Hzo7qX;footer - ,&#10;     12:name - &gt;iw;header - uUpv5Jm I vVg5Dxc~];footer - EF^h6m#}r[b#Qd 3H7(,&#10;     13:;;,&#10;     14:name - ;header - oCML4lu#p4DoHYc;footer - ,&#10;     15:name - ;header - p&gt;@Ne?W k :=Hzo7qX;footer - ,&#10;     16:name - &gt;iw;header - uUpv5Jm I vVg5Dxc~];footer - EF^h6m#}r[b#Qd 3H7(,&#10;     17:;;,&#10;     18:name - ;header - oCML4lu#p4DoHYc;footer - ,&#10;     19:name - ;header - p&gt;@Ne?W k :=Hzo7qX;footer - ,&#10;  +  None:name -   ;header - I'z[Redf&lt;cd8-h7HkMF;footer - RV%{2}  a3U#y8,&#10;    ]">app = &lt;fixture.application.Application object at 0x000002CD94DC21F0&gt;
+db = &lt;fixture.db.DbFixture object at 0x000002CD94DA6C10&gt;
+json_groups = None:name -   ;header - I'z[Redf&lt;cd8-h7HkMF;footer - RV%{2}  a3U#y8
+
+    def test_add_group(app, db, json_groups):
+        group = json_groups
+        groups_list_before = db.get_group_list()
+        app.group.create(group)
+        groups_list_after = db.get_group_list()
+        groups_list_before.append(group)
+&gt;       assert sorted(groups_list_before, key=Group.id_or_max) == sorted(groups_list_after, key=Group.id_or_max)
+E       AssertionError: assert [8:Commerce;A...(, 13:;;, ...] == [8:Commerce;A...(, 13:;;, ...]
+E         Left contains one more item: None:name -   ;header - I'z[Redf&lt;cd8-h7HkMF;footer - RV%{2}  a3U#y8
+E         Full diff:
+E           [
+E            8:Commerce;All sales;All sales,
+E            9:;;,
+E            10:name - ;header - oCML4lu#p4DoHYc;footer - ,
+E            11:name - ;header - p&gt;@Ne?W k :=Hzo7qX;footer - ,
+E            12:name - &gt;iw;header - uUpv5Jm I vVg5Dxc~];footer - EF^h6m#}r[b#Qd 3H7(,
+E            13:;;,
+E            14:name - ;header - oCML4lu#p4DoHYc;footer - ,
+E            15:name - ;header - p&gt;@Ne?W k :=Hzo7qX;footer - ,
+E            16:name - &gt;iw;header - uUpv5Jm I vVg5Dxc~];footer - EF^h6m#}r[b#Qd 3H7(,
+E            17:;;,
+E            18:name - ;header - oCML4lu#p4DoHYc;footer - ,
+E            19:name - ;header - p&gt;@Ne?W k :=Hzo7qX;footer - ,
+E         +  None:name -   ;header - I'z[Redf&lt;cd8-h7HkMF;footer - RV%{2}  a3U#y8,
+E           ]
+
+test\test_add_group.py:11: AssertionError</failure></testcase><testcase classname="test.test_add_group" name="test_add_group[None:name - &gt;iw;header - uUpv5Jm I vVg5Dxc~];footer - EF^h6m#}r[b#Qd 3H7(]" time="1.070" /><testcase classname="test.test_add_group" name="test_add_group[None:name - ;header - oap'g s{VA!Yh6!;footer - e Pcx[1rl| n`J3`k]" time="1.123"><failure message="AssertionError: assert [8:Commerce;A...(, 13:;;, ...] == [8:Commerce;A...(, 13:;;, ...]&#10;  Left contains one more item: None:name - ;header - oap'g s{VA!Yh6!;footer - e Pcx[1rl| n`J3`k&#10;  Full diff:&#10;    [&#10;     8:Commerce;All sales;All sales,&#10;     9:;;,&#10;     10:name - ;header - oCML4lu#p4DoHYc;footer - ,&#10;     11:name - ;header - p&gt;@Ne?W k :=Hzo7qX;footer - ,&#10;     12:name - &gt;iw;header - uUpv5Jm I vVg5Dxc~];footer - EF^h6m#}r[b#Qd 3H7(,&#10;     13:;;,&#10;     14:name - ;header - oCML4lu#p4DoHYc;footer - ,&#10;     15:name - ;header - p&gt;@Ne?W k :=Hzo7qX;footer - ,&#10;     16:name - &gt;iw;header - uUpv5Jm I vVg5Dxc~];footer - EF^h6m#}r[b#Qd 3H7(,&#10;     17:;;,&#10;     18:name - ;header - oCML4lu#p4DoHYc;footer - ,&#10;     19:name - ;header - p&gt;@Ne?W k :=Hzo7qX;footer - ,&#10;     20:name - &gt;iw;header - uUpv5Jm I vVg5Dxc~];footer - EF^h6m#}r[b#Qd 3H7(,&#10;  +  None:name - ;header - oap'g s{VA!Yh6!;footer - e Pcx[1rl| n`J3`k,&#10;    ]">app = &lt;fixture.application.Application object at 0x000002CD94DC21F0&gt;
+db = &lt;fixture.db.DbFixture object at 0x000002CD94DA6C10&gt;
+json_groups = None:name - ;header - oap'g s{VA!Yh6!;footer - e Pcx[1rl| n`J3`k
+
+    def test_add_group(app, db, json_groups):
+        group = json_groups
+        groups_list_before = db.get_group_list()
+        app.group.create(group)
+        groups_list_after = db.get_group_list()
+        groups_list_before.append(group)
+&gt;       assert sorted(groups_list_before, key=Group.id_or_max) == sorted(groups_list_after, key=Group.id_or_max)
+E       AssertionError: assert [8:Commerce;A...(, 13:;;, ...] == [8:Commerce;A...(, 13:;;, ...]
+E         Left contains one more item: None:name - ;header - oap'g s{VA!Yh6!;footer - e Pcx[1rl| n`J3`k
+E         Full diff:
+E           [
+E            8:Commerce;All sales;All sales,
+E            9:;;,
+E            10:name - ;header - oCML4lu#p4DoHYc;footer - ,
+E            11:name - ;header - p&gt;@Ne?W k :=Hzo7qX;footer - ,
+E            12:name - &gt;iw;header - uUpv5Jm I vVg5Dxc~];footer - EF^h6m#}r[b#Qd 3H7(,
+E            13:;;,
+E            14:name - ;header - oCML4lu#p4DoHYc;footer - ,
+E            15:name - ;header - p&gt;@Ne?W k :=Hzo7qX;footer - ,
+E            16:name - &gt;iw;header - uUpv5Jm I vVg5Dxc~];footer - EF^h6m#}r[b#Qd 3H7(,
+E            17:;;,
+E            18:name - ;header - oCML4lu#p4DoHYc;footer - ,
+E            19:name - ;header - p&gt;@Ne?W k :=Hzo7qX;footer - ,
+E            20:name - &gt;iw;header - uUpv5Jm I vVg5Dxc~];footer - EF^h6m#}r[b#Qd 3H7(,
+E         +  None:name - ;header - oap'g s{VA!Yh6!;footer - e Pcx[1rl| n`J3`k,
+E           ]
+
+test\test_add_group.py:11: AssertionError</failure></testcase><testcase classname="test.test_add_user" name="test_add_user[None:;;;;;;;;;]" time="6.371" /><testcase classname="test.test_add_user" name="test_add_user[None:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ&lt;4NA|;address1o}3&quot;d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails&lt;E1q}S;email2z W?hC;email3]_{;phone2x-J]" time="6.615"><failure message="assert [2:Alexey;Tru...]_{;phone2x-J] == [2:Alexey;Tru...]_{;phone2x-J]&#10;  At index 2 diff: None:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ&lt;4NA|;address1o}3&quot;d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails&lt;E1q}S;email2z W?hC;email3]_{;phone2x-J != 4:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ;address1o}3&quot;d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails;email2z W?hC;email3]_{;phone2x-J&#10;  Full diff:&#10;    [&#10;     2:Alexey;Trushin;Tomsk;101010;89231234567;131313;alex224a@yandex.ru;trushin88@gmail.com;newmail_atrushin@mail.ru;121212,&#10;     3:;;;;;;;;;,&#10;  -  4:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ;address1o}3&quot;d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails;email2z W?hC;email3]_{;phone2x-J,&#10;  ?  ^&#10;  +  None:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ&lt;4NA|;address1o}3&quot;d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails&lt;E1q}S;email2z W?hC;email3]_{;phone2x-J,&#10;  ?  ^^^^                                     +++++                                                                         ++++++&#10;    ]">app = &lt;fixture.application.Application object at 0x000002CD94DC21F0&gt;
+db = &lt;fixture.db.DbFixture object at 0x000002CD94DA6C10&gt;, check_ui = False
+json_users = None:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ&lt;4NA|;address1o}3"d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails&lt;E1q}S;email2z W?hC;email3]_{;phone2x-J
+
+    def test_add_user(app, db, check_ui, json_users):
+        user = json_users
+        contacts_list_before = db.get_contacts_list()
+        app.user.create(user)
+        contacts_list_after = db.get_contacts_list()
+        contacts_list_before.append(user)
+&gt;       assert sorted(contacts_list_before, key=User.id_or_max) == sorted(contacts_list_after, key=User.id_or_max)
+E       assert [2:Alexey;Tru...]_{;phone2x-J] == [2:Alexey;Tru...]_{;phone2x-J]
+E         At index 2 diff: None:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ&lt;4NA|;address1o}3"d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails&lt;E1q}S;email2z W?hC;email3]_{;phone2x-J != 4:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ;address1o}3"d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails;email2z W?hC;email3]_{;phone2x-J
+E         Full diff:
+E           [
+E            2:Alexey;Trushin;Tomsk;101010;89231234567;131313;alex224a@yandex.ru;trushin88@gmail.com;newmail_atrushin@mail.ru;121212,
+E            3:;;;;;;;;;,
+E         -  4:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ;address1o}3"d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails;email2z W?hC;email3]_{;phone2x-J,
+E         ?  ^
+E         +  None:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ&lt;4NA|;address1o}3"d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails&lt;E1q}S;email2z W?hC;email3]_{;phone2x-J,
+E         ?  ^^^^                                     +++++                                                                         ++++++
+E           ]
+
+test\test_add_user.py:11: AssertionError</failure></testcase><testcase classname="test.test_add_user" name="test_add_user[None:firstname&lt;g. 8I$+0[;lastname;address  Hk&amp;sCe;home~Mp]a&lt;~,;mobile51Hn!DAB ;work3p (;emailub?5;email2&quot;@3;email3\\R;phone2}`]" time="6.497"><failure message="assert [2:Alexey;Tru...l3\R;phone2}`] == [2:Alexey;Tru...]_{;phone2x-J]&#10;  Left contains one more item: None:firstname&lt;g. 8I$+0[;lastname;address  Hk&amp;sCe;home~Mp]a&lt;~,;mobile51Hn!DAB ;work3p (;emailub?5;email2&quot;@3;email3\R;phone2}`&#10;  Full diff:&#10;    [&#10;     2:Alexey;Trushin;Tomsk;101010;89231234567;131313;alex224a@yandex.ru;trushin88@gmail.com;newmail_atrushin@mail.ru;121212,&#10;     3:;;;;;;;;;,&#10;     4:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ;address1o}3&quot;d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails;email2z W?hC;email3]_{;phone2x-J,&#10;  +  None:firstname&lt;g. 8I$+0[;lastname;address  Hk&amp;sCe;home~Mp]a&lt;~,;mobile51Hn!DAB ;work3p (;emailub?5;email2&quot;@3;email3\R;phone2}`,&#10;    ]">app = &lt;fixture.application.Application object at 0x000002CD94DC21F0&gt;
+db = &lt;fixture.db.DbFixture object at 0x000002CD94DA6C10&gt;, check_ui = False
+json_users = None:firstname&lt;g. 8I$+0[;lastname;address  Hk&amp;sCe;home~Mp]a&lt;~,;mobile51Hn!DAB ;work3p (;emailub?5;email2"@3;email3\R;phone2}`
+
+    def test_add_user(app, db, check_ui, json_users):
+        user = json_users
+        contacts_list_before = db.get_contacts_list()
+        app.user.create(user)
+        contacts_list_after = db.get_contacts_list()
+        contacts_list_before.append(user)
+&gt;       assert sorted(contacts_list_before, key=User.id_or_max) == sorted(contacts_list_after, key=User.id_or_max)
+E       assert [2:Alexey;Tru...l3\R;phone2}`] == [2:Alexey;Tru...]_{;phone2x-J]
+E         Left contains one more item: None:firstname&lt;g. 8I$+0[;lastname;address  Hk&amp;sCe;home~Mp]a&lt;~,;mobile51Hn!DAB ;work3p (;emailub?5;email2"@3;email3\R;phone2}`
+E         Full diff:
+E           [
+E            2:Alexey;Trushin;Tomsk;101010;89231234567;131313;alex224a@yandex.ru;trushin88@gmail.com;newmail_atrushin@mail.ru;121212,
+E            3:;;;;;;;;;,
+E            4:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ;address1o}3"d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails;email2z W?hC;email3]_{;phone2x-J,
+E         +  None:firstname&lt;g. 8I$+0[;lastname;address  Hk&amp;sCe;home~Mp]a&lt;~,;mobile51Hn!DAB ;work3p (;emailub?5;email2"@3;email3\R;phone2}`,
+E           ]
+
+test\test_add_user.py:11: AssertionError</failure></testcase><testcase classname="test.test_add_user" name="test_add_user[None:firstnameQ^q&amp;: {;lastnameq[] pHs3^y_B4 ;addressfuV[We D UILiL;home;mobile = od6p{L@;workI' =xHWEQ;email;email2;email37C x;phone2_;@]" time="6.703"><failure message="assert [2:Alexey;Tru...C x;phone2_;@] == [2:Alexey;Tru...]_{;phone2x-J]&#10;  Left contains one more item: None:firstnameQ^q&amp;: {;lastnameq[] pHs3^y_B4 ;addressfuV[We D UILiL;home;mobile = od6p{L@;workI' =xHWEQ;email;email2;email37C x;phone2_;@&#10;  Full diff:&#10;    [&#10;     2:Alexey;Trushin;Tomsk;101010;89231234567;131313;alex224a@yandex.ru;trushin88@gmail.com;newmail_atrushin@mail.ru;121212,&#10;     3:;;;;;;;;;,&#10;     4:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ;address1o}3&quot;d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails;email2z W?hC;email3]_{;phone2x-J,&#10;  +  None:firstnameQ^q&amp;: {;lastnameq[] pHs3^y_B4 ;addressfuV[We D UILiL;home;mobile = od6p{L@;workI' =xHWEQ;email;email2;email37C x;phone2_;@,&#10;    ]">app = &lt;fixture.application.Application object at 0x000002CD94DC21F0&gt;
+db = &lt;fixture.db.DbFixture object at 0x000002CD94DA6C10&gt;, check_ui = False
+json_users = None:firstnameQ^q&amp;: {;lastnameq[] pHs3^y_B4 ;addressfuV[We D UILiL;home;mobile = od6p{L@;workI' =xHWEQ;email;email2;email37C x;phone2_;@
+
+    def test_add_user(app, db, check_ui, json_users):
+        user = json_users
+        contacts_list_before = db.get_contacts_list()
+        app.user.create(user)
+        contacts_list_after = db.get_contacts_list()
+        contacts_list_before.append(user)
+&gt;       assert sorted(contacts_list_before, key=User.id_or_max) == sorted(contacts_list_after, key=User.id_or_max)
+E       assert [2:Alexey;Tru...C x;phone2_;@] == [2:Alexey;Tru...]_{;phone2x-J]
+E         Left contains one more item: None:firstnameQ^q&amp;: {;lastnameq[] pHs3^y_B4 ;addressfuV[We D UILiL;home;mobile = od6p{L@;workI' =xHWEQ;email;email2;email37C x;phone2_;@
+E         Full diff:
+E           [
+E            2:Alexey;Trushin;Tomsk;101010;89231234567;131313;alex224a@yandex.ru;trushin88@gmail.com;newmail_atrushin@mail.ru;121212,
+E            3:;;;;;;;;;,
+E            4:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ;address1o}3"d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails;email2z W?hC;email3]_{;phone2x-J,
+E         +  None:firstnameQ^q&amp;: {;lastnameq[] pHs3^y_B4 ;addressfuV[We D UILiL;home;mobile = od6p{L@;workI' =xHWEQ;email;email2;email37C x;phone2_;@,
+E           ]
+
+test\test_add_user.py:11: AssertionError</failure></testcase><testcase classname="test.test_add_user" name="test_add_user[None:firstnameOJ7lzwe;lastname. PVIJf:mzHT4B;address[ t]O;home dh!&gt;i.{;mobilezwi5 M  (;work)0 ~r3hxP;email_ S~{;email2-.?p]Hu&lt;;email3;phone2E7:_Jh]" time="6.718"><failure message="assert [2:Alexey;Tru...;phone2E7:_Jh] == [2:Alexey;Tru...;phone2E7:_Jh]&#10;  At index 3 diff: None:firstnameOJ7lzwe;lastname. PVIJf:mzHT4B;address[ t]O;home dh!&gt;i.{;mobilezwi5 M  (;work)0 ~r3hxP;email_ S~{;email2-.?p]Hu&lt;;email3;phone2E7:_Jh != 5:firstnameOJ7lzwe;lastname. PVIJf:mzHT4B;address[ t]O;home dh!&gt;i.{;mobilezwi5 M  (;work)0 ~r3hxP;email_ S~{;email2-.?p]Hu;email3;phone2E7:_Jh&#10;  Full diff:&#10;    [&#10;     2:Alexey;Trushin;Tomsk;101010;89231234567;131313;alex224a@yandex.ru;trushin88@gmail.com;newmail_atrushin@mail.ru;121212,&#10;     3:;;;;;;;;;,&#10;     4:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ;address1o}3&quot;d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails;email2z W?hC;email3]_{;phone2x-J,&#10;  -  5:firstnameOJ7lzwe;lastname. PVIJf:mzHT4B;address[ t]O;home dh!&gt;i.{;mobilezwi5 M  (;work)0 ~r3hxP;email_ S~{;email2-.?p]Hu;email3;phone2E7:_Jh,&#10;  ?  ^&#10;  +  None:firstnameOJ7lzwe;lastname. PVIJf:mzHT4B;address[ t]O;home dh!&gt;i.{;mobilezwi5 M  (;work)0 ~r3hxP;email_ S~{;email2-.?p]Hu&lt;;email3;phone2E7:_Jh,&#10;  ?  ^^^^                                                                                                                         +&#10;    ]">app = &lt;fixture.application.Application object at 0x000002CD94DC21F0&gt;
+db = &lt;fixture.db.DbFixture object at 0x000002CD94DA6C10&gt;, check_ui = False
+json_users = None:firstnameOJ7lzwe;lastname. PVIJf:mzHT4B;address[ t]O;home dh!&gt;i.{;mobilezwi5 M  (;work)0 ~r3hxP;email_ S~{;email2-.?p]Hu&lt;;email3;phone2E7:_Jh
+
+    def test_add_user(app, db, check_ui, json_users):
+        user = json_users
+        contacts_list_before = db.get_contacts_list()
+        app.user.create(user)
+        contacts_list_after = db.get_contacts_list()
+        contacts_list_before.append(user)
+&gt;       assert sorted(contacts_list_before, key=User.id_or_max) == sorted(contacts_list_after, key=User.id_or_max)
+E       assert [2:Alexey;Tru...;phone2E7:_Jh] == [2:Alexey;Tru...;phone2E7:_Jh]
+E         At index 3 diff: None:firstnameOJ7lzwe;lastname. PVIJf:mzHT4B;address[ t]O;home dh!&gt;i.{;mobilezwi5 M  (;work)0 ~r3hxP;email_ S~{;email2-.?p]Hu&lt;;email3;phone2E7:_Jh != 5:firstnameOJ7lzwe;lastname. PVIJf:mzHT4B;address[ t]O;home dh!&gt;i.{;mobilezwi5 M  (;work)0 ~r3hxP;email_ S~{;email2-.?p]Hu;email3;phone2E7:_Jh
+E         Full diff:
+E           [
+E            2:Alexey;Trushin;Tomsk;101010;89231234567;131313;alex224a@yandex.ru;trushin88@gmail.com;newmail_atrushin@mail.ru;121212,
+E            3:;;;;;;;;;,
+E            4:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ;address1o}3"d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails;email2z W?hC;email3]_{;phone2x-J,
+E         -  5:firstnameOJ7lzwe;lastname. PVIJf:mzHT4B;address[ t]O;home dh!&gt;i.{;mobilezwi5 M  (;work)0 ~r3hxP;email_ S~{;email2-.?p]Hu;email3;phone2E7:_Jh,
+E         ?  ^
+E         +  None:firstnameOJ7lzwe;lastname. PVIJf:mzHT4B;address[ t]O;home dh!&gt;i.{;mobilezwi5 M  (;work)0 ~r3hxP;email_ S~{;email2-.?p]Hu&lt;;email3;phone2E7:_Jh,
+E         ?  ^^^^                                                                                                                         +
+E           ]
+
+test\test_add_user.py:11: AssertionError</failure></testcase><testcase classname="test.test_add_user" name="test_add_user[None:firstname$:R(8cR@Hi Vi5();lastnamegf.`Siv/~R+./B};address:R ;home:{h}/C+vA.;mobilef`Y6;work;email&amp;&gt;/P;email20 Qlp;email3E|zk;phone2:N1VZz']" time="6.563"><failure message="assert [2:Alexey;Tru...phone2:N1VZz'] == [2:Alexey;Tru...;phone2E7:_Jh]&#10;  Left contains one more item: None:firstname$:R(8cR@Hi Vi5();lastnamegf.`Siv/~R+./B};address:R ;home:{h}/C+vA.;mobilef`Y6;work;email&amp;&gt;/P;email20 Qlp;email3E|zk;phone2:N1VZz'&#10;  Full diff:&#10;    [&#10;     2:Alexey;Trushin;Tomsk;101010;89231234567;131313;alex224a@yandex.ru;trushin88@gmail.com;newmail_atrushin@mail.ru;121212,&#10;     3:;;;;;;;;;,&#10;     4:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ;address1o}3&quot;d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails;email2z W?hC;email3]_{;phone2x-J,&#10;     5:firstnameOJ7lzwe;lastname. PVIJf:mzHT4B;address[ t]O;home dh!&gt;i.{;mobilezwi5 M  (;work)0 ~r3hxP;email_ S~{;email2-.?p]Hu;email3;phone2E7:_Jh,&#10;  +  None:firstname$:R(8cR@Hi Vi5();lastnamegf.`Siv/~R+./B};address:R ;home:{h}/C+vA.;mobilef`Y6;work;email&amp;&gt;/P;email20 Qlp;email3E|zk;phone2:N1VZz',&#10;    ]">app = &lt;fixture.application.Application object at 0x000002CD94DC21F0&gt;
+db = &lt;fixture.db.DbFixture object at 0x000002CD94DA6C10&gt;, check_ui = False
+json_users = None:firstname$:R(8cR@Hi Vi5();lastnamegf.`Siv/~R+./B};address:R ;home:{h}/C+vA.;mobilef`Y6;work;email&amp;&gt;/P;email20 Qlp;email3E|zk;phone2:N1VZz'
+
+    def test_add_user(app, db, check_ui, json_users):
+        user = json_users
+        contacts_list_before = db.get_contacts_list()
+        app.user.create(user)
+        contacts_list_after = db.get_contacts_list()
+        contacts_list_before.append(user)
+&gt;       assert sorted(contacts_list_before, key=User.id_or_max) == sorted(contacts_list_after, key=User.id_or_max)
+E       assert [2:Alexey;Tru...phone2:N1VZz'] == [2:Alexey;Tru...;phone2E7:_Jh]
+E         Left contains one more item: None:firstname$:R(8cR@Hi Vi5();lastnamegf.`Siv/~R+./B};address:R ;home:{h}/C+vA.;mobilef`Y6;work;email&amp;&gt;/P;email20 Qlp;email3E|zk;phone2:N1VZz'
+E         Full diff:
+E           [
+E            2:Alexey;Trushin;Tomsk;101010;89231234567;131313;alex224a@yandex.ru;trushin88@gmail.com;newmail_atrushin@mail.ru;121212,
+E            3:;;;;;;;;;,
+E            4:firstname&gt;-N.i;lastname3#^ 6M7_kfzdQ;address1o}3"d_Xj_zu-3) $x.;homeg et7;lX  ;mobile[V=];work2K{RV nF;emails;email2z W?hC;email3]_{;phone2x-J,
+E            5:firstnameOJ7lzwe;lastname. PVIJf:mzHT4B;address[ t]O;home dh!&gt;i.{;mobilezwi5 M  (;work)0 ~r3hxP;email_ S~{;email2-.?p]Hu;email3;phone2E7:_Jh,
+E         +  None:firstname$:R(8cR@Hi Vi5();lastnamegf.`Siv/~R+./B};address:R ;home:{h}/C+vA.;mobilef`Y6;work;email&amp;&gt;/P;email20 Qlp;email3E|zk;phone2:N1VZz',
+E           ]
+
+test\test_add_user.py:11: AssertionError</failure></testcase><testcase classname="test.test_add_user_to_group" name="test_add_user_to_group" time="0.744" /><testcase classname="test.test_contact_info" name="test_info_on_home_page" time="0.328"><failure message="AssertionError: assert 'homeget7;lX\...VnF\nphone2xJ' == 'homeget7;lX\...nF\nphone2x-J'&#10;    homeget7;lX&#10;    mobile[V=]&#10;    work2K{RVnF&#10;  - phone2x-J&#10;  ?        -&#10;  + phone2xJ">app = &lt;fixture.application.Application object at 0x000002CD94DC21F0&gt;
+db = &lt;fixture.db.DbFixture object at 0x000002CD94DA6C10&gt;
+
+    def test_info_on_home_page(app, db):
+        if len(db.get_contacts_list()) == 0:
+            app.user.create(User(firstname="Alexey", middlename="Valeryevich", lastname="Trushin",
+                                 nickname="Valereech", title="", company="PT",
+                                 address="Tomsk", home="-", mobile="89231234567",
+                                 work="-", fax="", email="alex224a@yandex.ru",
+                                 email2="trushin88@gmail.com", email3="newmail_atrushin@mail.ru",
+                                 homepage="", bday="13", bmonth="September",
+                                 byear="1988", address2="-", phone2="-", notes=""))
+        contact_list_from_db = sorted(db.get_contacts_list(), key=User.id_or_max)
+        contact_from_home_page = sorted(app.user.get_contacts_list(), key=User.id_or_max)
+        for contact in range(len(contact_list_from_db)):
+            assert contact_from_home_page[contact].id == contact_list_from_db[contact].id
+            assert contact_from_home_page[contact].firstname == contact_list_from_db[contact].firstname
+            assert contact_from_home_page[contact].lastname == contact_list_from_db[contact].lastname
+            assert contact_from_home_page[contact].address == contact_list_from_db[contact].address
+            print(contact_from_home_page)
+            assert contact_from_home_page[contact].all_emails_from_home_page ==\
+                   merge_emails_like_on_home_page(contact_list_from_db[contact])
+&gt;           assert contact_from_home_page[contact].all_phones_from_home_page ==\
+                   merge_phones_like_on_home_page(contact_list_from_db[contact])
+E           AssertionError: assert 'homeget7;lX\...VnF\nphone2xJ' == 'homeget7;lX\...nF\nphone2x-J'
+E               homeget7;lX
+E               mobile[V=]
+E               work2K{RVnF
+E             - phone2x-J
+E             ?        -
+E             + phone2xJ
+
+test\test_contact_info.py:24: AssertionError</failure></testcase><testcase classname="test.test_db_matches_ui" name="test_group_list" time="0.308" /><testcase classname="test.test_del_group" name="test_delete_some_group" time="0.393" /><testcase classname="test.test_del_user" name="test_delete_some_user" time="3.036"><failure message="selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //input[@id='5']">app = &lt;fixture.application.Application object at 0x000002CD94DC21F0&gt;
+db = &lt;fixture.db.DbFixture object at 0x000002CD94DA6C10&gt;, check_ui = False
+
+    def test_delete_some_user(app, db, check_ui):
+        if db.get_contacts_list() == 0:
+            app.user.create(User(firstname="New user"))
+        contacts_list_before = db.get_contacts_list()
+        user = random.choice(contacts_list_before)
+&gt;       app.user.delete_user_by_id(user.id)
+
+test\test_del_user.py:10: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+fixture\user.py:94: in delete_user_by_id
+    self.select_user_by_id(id)
+fixture\user.py:77: in select_user_by_id
+    wd.find_element_by_xpath("//input[@id='"+id+"']").click()
+..\..\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9\lib\site-packages\selenium\webdriver\remote\webdriver.py:394: in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+..\..\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9\lib\site-packages\selenium\webdriver\remote\webdriver.py:976: in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+..\..\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9\lib\site-packages\selenium\webdriver\remote\webdriver.py:321: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x000002CD94DC2B20&gt;
+response = {'status': 404, 'value': '{"value":{"error":"no such element","message":"Unable to locate element: //input[@id=\'5\']".../content/shared/webdriver/Errors.sys.mjs:507:5\\ndom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:132:16\\n"}}'}
+
+    def check_response(self, response):
+        """
+        Checks that a JSON response from the WebDriver does not have an error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        """
+        status = response.get('status', None)
+        if status is None or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get("message", "")
+        screen = response.get("screen", "")
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get('value', None)
+            if value_json and isinstance(value_json, basestring):
+                import json
+                try:
+                    value = json.loads(value_json)
+                    if len(value.keys()) == 1:
+                        value = value['value']
+                    status = value.get('error', None)
+                    if status is None:
+                        status = value["status"]
+                        message = value["value"]
+                        if not isinstance(message, basestring):
+                            value = message
+                            message = message.get('message')
+                    else:
+                        message = value.get('message', None)
+                except ValueError:
+                    pass
+    
+        exception_class = ErrorInResponseException
+        if status in ErrorCode.NO_SUCH_ELEMENT:
+            exception_class = NoSuchElementException
+        elif status in ErrorCode.NO_SUCH_FRAME:
+            exception_class = NoSuchFrameException
+        elif status in ErrorCode.NO_SUCH_WINDOW:
+            exception_class = NoSuchWindowException
+        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:
+            exception_class = StaleElementReferenceException
+        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:
+            exception_class = ElementNotVisibleException
+        elif status in ErrorCode.INVALID_ELEMENT_STATE:
+            exception_class = InvalidElementStateException
+        elif status in ErrorCode.INVALID_SELECTOR \
+                or status in ErrorCode.INVALID_XPATH_SELECTOR \
+                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:
+            exception_class = InvalidSelectorException
+        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:
+            exception_class = ElementNotSelectableException
+        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:
+            exception_class = ElementNotInteractableException
+        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:
+            exception_class = InvalidCookieDomainException
+        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:
+            exception_class = UnableToSetCookieException
+        elif status in ErrorCode.TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.SCRIPT_TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.UNKNOWN_ERROR:
+            exception_class = WebDriverException
+        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:
+            exception_class = UnexpectedAlertPresentException
+        elif status in ErrorCode.NO_ALERT_OPEN:
+            exception_class = NoAlertPresentException
+        elif status in ErrorCode.IME_NOT_AVAILABLE:
+            exception_class = ImeNotAvailableException
+        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:
+            exception_class = ImeActivationFailedException
+        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:
+            exception_class = MoveTargetOutOfBoundsException
+        elif status in ErrorCode.JAVASCRIPT_ERROR:
+            exception_class = JavascriptException
+        elif status in ErrorCode.SESSION_NOT_CREATED:
+            exception_class = SessionNotCreatedException
+        elif status in ErrorCode.INVALID_ARGUMENT:
+            exception_class = InvalidArgumentException
+        elif status in ErrorCode.NO_SUCH_COOKIE:
+            exception_class = NoSuchCookieException
+        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:
+            exception_class = ScreenshotException
+        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:
+            exception_class = ElementClickInterceptedException
+        elif status in ErrorCode.INSECURE_CERTIFICATE:
+            exception_class = InsecureCertificateException
+        elif status in ErrorCode.INVALID_COORDINATES:
+            exception_class = InvalidCoordinatesException
+        elif status in ErrorCode.INVALID_SESSION_ID:
+            exception_class = InvalidSessionIdException
+        elif status in ErrorCode.UNKNOWN_METHOD:
+            exception_class = UnknownMethodException
+        else:
+            exception_class = WebDriverException
+        if value == '' or value is None:
+            value = response['value']
+        if isinstance(value, basestring):
+            if exception_class == ErrorInResponseException:
+                raise exception_class(response, value)
+            raise exception_class(value)
+        if message == "" and 'message' in value:
+            message = value['message']
+    
+        screen = None
+        if 'screen' in value:
+            screen = value['screen']
+    
+        stacktrace = None
+        if 'stackTrace' in value and value['stackTrace']:
+            stacktrace = []
+            try:
+                for frame in value['stackTrace']:
+                    line = self._value_or_default(frame, 'lineNumber', '')
+                    file = self._value_or_default(frame, 'fileName', '&lt;anonymous&gt;')
+                    if line:
+                        file = "%s:%s" % (file, line)
+                    meth = self._value_or_default(frame, 'methodName', '&lt;anonymous&gt;')
+                    if 'className' in frame:
+                        meth = "%s.%s" % (frame['className'], meth)
+                    msg = "    at %s (%s)"
+                    msg = msg % (meth, file)
+                    stacktrace.append(msg)
+            except TypeError:
+                pass
+        if exception_class == ErrorInResponseException:
+            raise exception_class(response, message)
+        elif exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if 'data' in value:
+                alert_text = value['data'].get('text')
+            elif 'alert' in value:
+                alert_text = value['alert'].get('text')
+            raise exception_class(message, screen, stacktrace, alert_text)
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //input[@id='5']
+
+..\..\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9\lib\site-packages\selenium\webdriver\remote\errorhandler.py:242: NoSuchElementException</failure></testcase><testcase classname="test.test_del_user_from_group" name="test_delete_user_from_group" time="0.022"><failure message="pony.orm.core.BindingError: Database object was already bound to MySQL provider">app = &lt;fixture.application.Application object at 0x000002CD94DC21F0&gt;
+
+    def test_delete_user_from_group(app):
+&gt;       orm_db = ORMfixture(host='localhost', name='addressbook', user='root', password='')
+
+test\test_del_user_from_group.py:8: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+fixture\orm.py:30: in __init__
+    self.db.bind('mysql', host=host, database=name, user=user, password=password)
+..\..\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9\lib\site-packages\pony\orm\core.py:765: in bind
+    self._bind(*args, **kwargs)
+..\..\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9\lib\site-packages\pony\orm\core.py:769: in _bind
+    throw(BindingError, 'Database object was already bound to %s provider' % self.provider.dialect)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+exc_type = &lt;class 'pony.orm.core.BindingError'&gt;
+args = ('Database object was already bound to MySQL provider',), kwargs = {}
+
+    def throw(exc_type, *args, **kwargs):
+        if isinstance(exc_type, Exception):
+            assert not args and not kwargs
+            exc = exc_type
+        else: exc = exc_type(*args, **kwargs)
+        exc.__cause__ = None
+        try:
+            if not (pony.MODE == 'INTERACTIVE' and options.CUT_TRACEBACK):
+&gt;               raise exc
+E               pony.orm.core.BindingError: Database object was already bound to MySQL provider
+
+..\..\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9\lib\site-packages\pony\utils\utils.py:99: BindingError</failure></testcase><testcase classname="test.test_mod_group" name="test_modify_some_group" time="1.263" /><testcase classname="test.test_mod_user" name="test_mod_some_user" time="4.336"><failure message="selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //*[@id='4']/../..//*[@title='Edit']">app = &lt;fixture.application.Application object at 0x000002CD94DC21F0&gt;
+db = &lt;fixture.db.DbFixture object at 0x000002CD94DA6C10&gt;, check_ui = False
+
+    def test_mod_some_user(app, db, check_ui):
+        if len(db.get_contacts_list()) == 0:
+            app.user.create(User(firstname="Alexey", middlename="Valeryevich", lastname="Trushin",
+                                        nickname="Valereech", title="", company="PT",
+                                        address="Tomsk", home="-", mobile="89231234567",
+                                        work="-", fax="", email="alex224a@yandex.ru",
+                                        email2="trushin88@gmail.com", email3="newmail_atrushin@mail.ru",
+                                        homepage="", bday="13", bmonth="September",
+                                        byear="1988", address2="-", phone2="-", notes=""))
+        contacts_list_before = db.get_contacts_list()
+        data_to_edit = (User(firstname="Alexey", middlename="Valeryevich", lastname="Trushin",
+                                        nickname="Valereech", title="", company="PT",
+                                        address="Tomsk", home="101010", mobile="89231234567",
+                                        work="131313", fax="", email="alex224a@yandex.ru",
+                                        email2="trushin88@gmail.com", email3="newmail_atrushin@mail.ru",
+                                        homepage="", bday="13", bmonth="September",
+                                        byear="1988", address2="-", phone2="121212", notes=""))
+        user = random.choice(contacts_list_before)
+        contacts_list_before.remove(user)
+        data_to_edit.id = user.id
+        contacts_list_before.append(data_to_edit)
+&gt;       app.user.modify_user_by_id(user.id, data_to_edit)
+
+test\test_mod_user.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+fixture\user.py:126: in modify_user_by_id
+    self.open_user_to_edit_by_id(id)
+fixture\user.py:111: in open_user_to_edit_by_id
+    wd.find_element_by_xpath("//*[@id='%s']/../..//*[@title='Edit']" % id).click()
+..\..\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9\lib\site-packages\selenium\webdriver\remote\webdriver.py:394: in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+..\..\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9\lib\site-packages\selenium\webdriver\remote\webdriver.py:976: in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+..\..\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9\lib\site-packages\selenium\webdriver\remote\webdriver.py:321: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x000002CD94DC2B20&gt;
+response = {'status': 404, 'value': '{"value":{"error":"no such element","message":"Unable to locate element: //*[@id=\'4\']/../..../content/shared/webdriver/Errors.sys.mjs:507:5\\ndom.find/&lt;/&lt;@chrome://remote/content/shared/DOM.sys.mjs:132:16\\n"}}'}
+
+    def check_response(self, response):
+        """
+        Checks that a JSON response from the WebDriver does not have an error.
+    
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+    
+        :Raises: If the response contains an error message.
+        """
+        status = response.get('status', None)
+        if status is None or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get("message", "")
+        screen = response.get("screen", "")
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get('value', None)
+            if value_json and isinstance(value_json, basestring):
+                import json
+                try:
+                    value = json.loads(value_json)
+                    if len(value.keys()) == 1:
+                        value = value['value']
+                    status = value.get('error', None)
+                    if status is None:
+                        status = value["status"]
+                        message = value["value"]
+                        if not isinstance(message, basestring):
+                            value = message
+                            message = message.get('message')
+                    else:
+                        message = value.get('message', None)
+                except ValueError:
+                    pass
+    
+        exception_class = ErrorInResponseException
+        if status in ErrorCode.NO_SUCH_ELEMENT:
+            exception_class = NoSuchElementException
+        elif status in ErrorCode.NO_SUCH_FRAME:
+            exception_class = NoSuchFrameException
+        elif status in ErrorCode.NO_SUCH_WINDOW:
+            exception_class = NoSuchWindowException
+        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:
+            exception_class = StaleElementReferenceException
+        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:
+            exception_class = ElementNotVisibleException
+        elif status in ErrorCode.INVALID_ELEMENT_STATE:
+            exception_class = InvalidElementStateException
+        elif status in ErrorCode.INVALID_SELECTOR \
+                or status in ErrorCode.INVALID_XPATH_SELECTOR \
+                or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER:
+            exception_class = InvalidSelectorException
+        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:
+            exception_class = ElementNotSelectableException
+        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:
+            exception_class = ElementNotInteractableException
+        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:
+            exception_class = InvalidCookieDomainException
+        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:
+            exception_class = UnableToSetCookieException
+        elif status in ErrorCode.TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.SCRIPT_TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.UNKNOWN_ERROR:
+            exception_class = WebDriverException
+        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:
+            exception_class = UnexpectedAlertPresentException
+        elif status in ErrorCode.NO_ALERT_OPEN:
+            exception_class = NoAlertPresentException
+        elif status in ErrorCode.IME_NOT_AVAILABLE:
+            exception_class = ImeNotAvailableException
+        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:
+            exception_class = ImeActivationFailedException
+        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:
+            exception_class = MoveTargetOutOfBoundsException
+        elif status in ErrorCode.JAVASCRIPT_ERROR:
+            exception_class = JavascriptException
+        elif status in ErrorCode.SESSION_NOT_CREATED:
+            exception_class = SessionNotCreatedException
+        elif status in ErrorCode.INVALID_ARGUMENT:
+            exception_class = InvalidArgumentException
+        elif status in ErrorCode.NO_SUCH_COOKIE:
+            exception_class = NoSuchCookieException
+        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:
+            exception_class = ScreenshotException
+        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:
+            exception_class = ElementClickInterceptedException
+        elif status in ErrorCode.INSECURE_CERTIFICATE:
+            exception_class = InsecureCertificateException
+        elif status in ErrorCode.INVALID_COORDINATES:
+            exception_class = InvalidCoordinatesException
+        elif status in ErrorCode.INVALID_SESSION_ID:
+            exception_class = InvalidSessionIdException
+        elif status in ErrorCode.UNKNOWN_METHOD:
+            exception_class = UnknownMethodException
+        else:
+            exception_class = WebDriverException
+        if value == '' or value is None:
+            value = response['value']
+        if isinstance(value, basestring):
+            if exception_class == ErrorInResponseException:
+                raise exception_class(response, value)
+            raise exception_class(value)
+        if message == "" and 'message' in value:
+            message = value['message']
+    
+        screen = None
+        if 'screen' in value:
+            screen = value['screen']
+    
+        stacktrace = None
+        if 'stackTrace' in value and value['stackTrace']:
+            stacktrace = []
+            try:
+                for frame in value['stackTrace']:
+                    line = self._value_or_default(frame, 'lineNumber', '')
+                    file = self._value_or_default(frame, 'fileName', '&lt;anonymous&gt;')
+                    if line:
+                        file = "%s:%s" % (file, line)
+                    meth = self._value_or_default(frame, 'methodName', '&lt;anonymous&gt;')
+                    if 'className' in frame:
+                        meth = "%s.%s" % (frame['className'], meth)
+                    msg = "    at %s (%s)"
+                    msg = msg % (meth, file)
+                    stacktrace.append(msg)
+            except TypeError:
+                pass
+        if exception_class == ErrorInResponseException:
+            raise exception_class(response, message)
+        elif exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if 'data' in value:
+                alert_text = value['data'].get('text')
+            elif 'alert' in value:
+                alert_text = value['alert'].get('text')
+            raise exception_class(message, screen, stacktrace, alert_text)
+&gt;       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //*[@id='4']/../..//*[@title='Edit']
+
+..\..\shiningpanda\jobs\62ae2d4d\virtualenvs\d41d8cd9\lib\site-packages\selenium\webdriver\remote\errorhandler.py:242: NoSuchElementException</failure></testcase></testsuite></testsuites>
